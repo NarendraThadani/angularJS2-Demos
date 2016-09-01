@@ -9,22 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var forms_1 = require('@angular/forms');
-var app_component_1 = require('./app.component');
-var phone_detail_component_1 = require('./phone-detail.component');
-var AppModule = (function () {
-    function AppModule() {
+var phone_1 = require('./phone');
+var PhoneDetailComponent = (function () {
+    function PhoneDetailComponent() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
-            declarations: [app_component_1.AppComponent, phone_detail_component_1.PhoneDetailComponent],
-            bootstrap: [app_component_1.AppComponent]
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', phone_1.Phone)
+    ], PhoneDetailComponent.prototype, "phone", void 0);
+    PhoneDetailComponent = __decorate([
+        core_1.Component({
+            selector: 'my-phone-detail',
+            template: "\n  <div *ngIf=\"phone\">\n    <h2>{{phone.name}} details!</h2>\n    <div><label>id: </label>{{phone.id}}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"phone.name\" placeholder=\"name\"/>\n    </div>\n  </div>\n"
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], PhoneDetailComponent);
+    return PhoneDetailComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.PhoneDetailComponent = PhoneDetailComponent;
+//# sourceMappingURL=phone-detail.component.js.map

@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
+import { Phone } from './phone';
 
-export class Phone{
-	id: number;
-	name: string;
-	
-}
 
 
 const PHONES: Phone[] = [
@@ -30,15 +26,8 @@ const PHONES: Phone[] = [
 			<span class="podium"> {{p.id}}</span> {{p.name}}
 		</li>
   </ul>
-  <div *ngIf="selectedPhone">
-	  <h2>{{selectedPhone.name}} Details</h2>
-	  <div>
-		<label>Id: </label>{{selectedPhone.id}}
-	  </div>
-	  <div>
-		<label>Name: </label>
-		<input [(ngModel)]="selectedPhone.name" placeHolder="name"></div>  
-  </div>`,
+  <my-phone-detail [phone]= selectedPhone></my-phone-detail>
+  `,
   
   styles: [`
   .selected {
