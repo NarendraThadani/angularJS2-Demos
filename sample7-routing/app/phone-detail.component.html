@@ -1,0 +1,11 @@
+<div *ngIf="phone">
+    <h2>{{phone.name}} details!</h2>
+    <div><label>id: </label>{{phone.id}}</div>
+    <div>
+      <label>name: </label>
+      <input [(ngModel)]="phone.name" placeholder="name"/>
+    </div>
+	
+	<button (click)="goBack()">Back</button>
+
+</div>
