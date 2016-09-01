@@ -30,7 +30,7 @@ var PhoneDetailComponent = (function () {
     };
     PhoneDetailComponent.prototype.save = function () {
         this.phoneService.update(this.phone)
-            .then(this.goBack());
+            .then(this.goBack);
     };
     __decorate([
         core_1.Input(), 

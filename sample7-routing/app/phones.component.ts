@@ -43,7 +43,7 @@ export class PhonesComponent implements OnInit {
 		
 	}
 	
-	add(name: String): void {
+	add(name: string): void {
 		name = name.trim();
 		if(!name ) { return ;}
 		

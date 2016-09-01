@@ -37,7 +37,7 @@ phone: Phone;
 	save(): void {
 		
 		this.phoneService.update(this.phone)
-			.then(this.goBack());
+			.then(this.goBack);
 		
 	}
 	
