@@ -28,6 +28,10 @@ var PhoneDetailComponent = (function () {
     PhoneDetailComponent.prototype.goBack = function () {
         window.history.back();
     };
+    PhoneDetailComponent.prototype.save = function () {
+        this.phoneService.update(this.phone)
+            .then(this.goBack());
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', phone_1.Phone)

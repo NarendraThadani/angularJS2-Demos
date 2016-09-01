@@ -42,6 +42,26 @@ export class PhonesComponent implements OnInit {
 		this.router.navigate(['/detail', this.selectedPhone.id]);
 		
 	}
+	
+	add(name: String): void {
+		name = name.trim();
+		if(!name ) { return ;}
+		
+		this.phoneService.create(name)
+			.then(phone => {
+				this.phones.push(phone);
+				this.selectedPhone = null;	
+			});
+	}
+	
+	delete(phone: Phone): void {
+		this.phoneService.delete(phone.id)
+		.then(() => {
+			this.phones = this.phones.filter(h => h !== phone);
+			if (this.selectedPhone === phone) { this.selectedPhone = null; }
+		});
+	}
+
 
 
 }

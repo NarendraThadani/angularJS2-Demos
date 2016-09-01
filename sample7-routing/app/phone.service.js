@@ -9,18 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mock_phones_1 = require('./mock-phones');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
 var PhoneService = (function () {
-    function PhoneService() {
+    function PhoneService(http) {
+        this.http = http;
+        this.phonesUrl = 'app/phones'; //URL to Web API
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     /*
-        getPhones function of our Service currently returns a mock data ..
-        but usually such functions tend to invoke some server Side Service to fetch data..
-        
-        i.e would be async.... so we return a Promise
+    
     */
     PhoneService.prototype.getPhones = function () {
-        return Promise.resolve(mock_phones_1.PHONES);
+        return this.http.get(this.phonesUrl)
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
     };
     /*
         simulating slow behaviour of getPhones
@@ -34,9 +38,33 @@ var PhoneService = (function () {
         return this.getPhones()
             .then(function (phones) { return phones.find(function (phone) { return phone.id === id; }); });
     };
+    PhoneService.prototype.update = function (phone) {
+        var url = this.phonesUrl + "/" + phone.id;
+        return this.http.put(url, JSON.stringify(phone), { headers: this.headers })
+            .toPromise()
+            .then(function () { return phone; })
+            .catch(this.handleError);
+    };
+    PhoneService.prototype.create = function (name) {
+        return this.http.post(this.phonesUrl, JSON.stringify({ name: name }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json().data; })
+            .catch(this.handleError);
+    };
+    PhoneService.prototype.delete = function (id) {
+        var url = this.phonesUrl + "/" + id;
+        return this.http.delete(url, { headers: this.headers })
+            .toPromise()
+            .then(function () { return null; })
+            .catch(this.handleError);
+    };
+    PhoneService.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    };
     PhoneService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], PhoneService);
     return PhoneService;
 }());

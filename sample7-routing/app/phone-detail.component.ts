@@ -33,5 +33,13 @@ phone: Phone;
 		
 		window.history.back();
 	}
+	
+	save(): void {
+		
+		this.phoneService.update(this.phone)
+			.then(this.goBack());
+		
+	}
+	
 
 }

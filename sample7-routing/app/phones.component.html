@@ -1,13 +1,22 @@
 <h2>Available Phones</h2> 
-  <ul class="phones">
-		<li *ngFor="let p of phones"  [class.selected]= " p===selectedPhone " (click)="onSelect(p)">
-			<span class="podium"> {{p.id}}</span> {{p.name}}
-		</li>
-  </ul>
-
-  <div *ngIf="selectedPhone">
-  <h2>
-    {{selectedPhone.name | uppercase}} is my Phone.
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
+<div>
+  <label>Phone name:</label> <input #phoneName />
+  <button (click)="add(phoneName.value); phoneName.value=''">
+    Add
+  </button>
 </div>
+
+<ul class="phones">
+	<li *ngFor="let p of phones"  [class.selected]= " p===selectedPhone " (click)="onSelect(p)">
+		<span class="podium"> {{p.id}}</span> {{p.name}}
+		<button class="delete" (click)="delete(p); $event.stopPropagation()">x</button>
+	</li>
+</ul>
+
+<div *ngIf="selectedPhone">
+	<h2>
+	{{selectedPhone.name | uppercase}} is my Phone.
+	</h2>
+	<button (click)="gotoDetail()">View Details</button>
+</div>
+

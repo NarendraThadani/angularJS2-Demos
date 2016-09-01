@@ -32,6 +32,28 @@ var PhonesComponent = (function () {
     PhonesComponent.prototype.gotoDetail = function () {
         this.router.navigate(['/detail', this.selectedPhone.id]);
     };
+    PhonesComponent.prototype.add = function (name) {
+        var _this = this;
+        name = name.trim();
+        if (!name) {
+            return;
+        }
+        this.phoneService.create(name)
+            .then(function (phone) {
+            _this.phones.push(phone);
+            _this.selectedPhone = null;
+        });
+    };
+    PhonesComponent.prototype.delete = function (phone) {
+        var _this = this;
+        this.phoneService.delete(phone.id)
+            .then(function () {
+            _this.phones = _this.phones.filter(function (h) { return h !== phone; });
+            if (_this.selectedPhone === phone) {
+                _this.selectedPhone = null;
+            }
+        });
+    };
     PhonesComponent = __decorate([
         core_1.Component({
             selector: 'my-phones',
