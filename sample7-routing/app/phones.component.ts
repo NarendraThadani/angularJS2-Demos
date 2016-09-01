@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Phone } from './phone';
-import {OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
 import  { PhoneService } from './phone.service';
 
 import { Router } from '@angular/router';

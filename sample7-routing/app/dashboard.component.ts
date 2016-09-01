@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit{
 
-	phones : Phones []  = [];
+	phones : Phone []  = [];
 	
 	constructor (private router: Router, private phoneService: PhoneService){
 		

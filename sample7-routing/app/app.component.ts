@@ -17,11 +17,10 @@ import  { PhoneService } from './phone.service';
  </nav>
   <router-outlet></router-outlet>
    `,
- 
- 
-  styleUrls: ['app/app.component.css']
+  styleUrls: ['app/app.component.css'],
   providers:  [PhoneService]
-})	
+})
+	
 export class AppComponent implements OnInit { 
 	title= 'CellPhone Arena';
 	
