@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
+require('./rxjs-extensions');
 // Imports for loading & configuring the in-memory web api
 var angular2_in_memory_web_api_1 = require('angular2-in-memory-web-api');
 var in_memory_data_service_1 = require('./in-memory-data.service');
@@ -20,6 +21,7 @@ var phone_detail_component_1 = require('./phone-detail.component');
 var phones_component_1 = require('./phones.component');
 var phone_service_1 = require('./phone.service');
 var dashboard_component_1 = require('./dashboard.component');
+var phone_search_component_1 = require('./phone-search.component');
 var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
@@ -27,7 +29,7 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, angular2_in_memory_web_api_1.InMemoryWebApiModule.forRoot(in_memory_data_service_1.InMemoryDataService), app_routing_1.routing],
-            declarations: [app_component_1.AppComponent, phone_detail_component_1.PhoneDetailComponent, phones_component_1.PhonesComponent, dashboard_component_1.DashboardComponent],
+            declarations: [app_component_1.AppComponent, phone_detail_component_1.PhoneDetailComponent, phones_component_1.PhonesComponent, dashboard_component_1.DashboardComponent, phone_search_component_1.PhoneSearchComponent],
             bootstrap: [app_component_1.AppComponent],
             providers: [phone_service_1.PhoneService]
         }), 
